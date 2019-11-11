@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Список покупок</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	
+</head>
+
+<body>
+
+	<div class="wrapper" id="app">
+
+	<div class="header">
+		<h1 class="header__heading">Начни свой список</h1>
+		<div class="header__form">
+			<input type="text" class="header__form-input" v-model="addProduct" @keyup.enter="addItem()">
+			<button class="header__form-btn" @click="addItem()">Добавить</button>
+		</div>
+	</div>
+
+	<div class="productListing">
+		<div class="productListing__card" v-for="item in items">
+			<div class="productListing__card-name"><span>{{item}}</span></div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<span>&copy; 2019 Все Права Защищены</span>
+	</div>
+
+</div>
+
+	<script>
+		new Vue({
+            el: "#app",
+            data: {
+                addProduct: '',
+                items: []
+            },
+            methods: {
+                addItem: function() {
+                    this.items.push(this.addProduct);
+                    this.addProduct = ''
+                }
+            },
+        })
+	</script>
+
+</body>
+</html>
